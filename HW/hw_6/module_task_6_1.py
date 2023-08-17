@@ -7,24 +7,27 @@
 
 from sys import argv
 
+
 def check_date(date: str):
     dd, mm, yy = map(int, date.split('.'))
-    print (dd, mm, yy)
+    print(dd, mm, yy)
     if 1 <= yy <= 9999:
         if mm in [1, 3, 5, 7, 8, 10, 12] and 1 <= dd <= 31:
             return True
         elif mm in [4, 6, 9, 11] and 1 <= dd <= 30:
             return True
-        elif 1 <= dd <= 28 + check_leap_year(yy):
+        elif 1 <= dd <= 28 + _check_leap_year(yy):
             return True
         else:
             return False
     return False
 
 
-def check_leap_year(yy):
+def _check_leap_year(yy):
     return yy % 4 == 0 and yy % 100 != 0 or yy % 400 == 0
 
-def calend_tetminal():
+
+def input_terminal():
     date = argv[1]
     print(check_date(date))
+
